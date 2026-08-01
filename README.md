@@ -1,6 +1,6 @@
 # REST Assured Test Framework (Podman Isolated)
 
-A production-grade API testing framework designed for a **pristine host environment**. All Java compilation, dependency resolution, and test execution occur exclusively within a **Podman container**, leaving the host system completely untouched.
+A production-grade API testing framework designed for a pristine host environment. All Java compilation, dependency resolution, and test execution occur exclusively within a **Podman container**, leaving the host system completely untouched.
 
 ## Architecture Overview
 
@@ -46,13 +46,14 @@ To edit code in IntelliJ while executing tests in the container:
 
 1. Open Project: Open the project root folder in IntelliJ.
 1. Create Run Configuration:
-- Go to Run > Edit Configurations.
-- Click + → Shell Script.
-- Name: Run Tests in Podman
-- Script Path: ./run-tests.sh (or podman with arguments)
-- Working Directory: Project Root
+1. Go to Run > Edit Configurations.
+1. Click + → Shell Script.
+1. Name: Run Tests in Podman
+1. Script Path: ./run-tests.sh (or podman with arguments)
+1. Working Directory: Project Root
 1. Run: Select the configuration and click the green Run button.
-Note: If you use the run-tests.sh script, it handles the volume mounting and command execution automatically.
+
+**Note:** If you use the run-tests.sh script, it handles the volume mounting and command execution automatically.
 
 ---
 
