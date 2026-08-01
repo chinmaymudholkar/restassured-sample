@@ -2,8 +2,10 @@ package io.github.chinmaymudholkar.tests;
 
 import io.github.chinmaymudholkar.base.ApiBase;
 import io.github.chinmaymudholkar.base.ApiResponse;
+import io.github.chinmaymudholkar.config.TestListeners;
 import io.github.chinmaymudholkar.services.HttpBinService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.Map;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.equalTo;
 
+@ExtendWith(TestListeners.class)
 class HttpBinStandardTests extends ApiBase {
 
     private final HttpBinService service = new HttpBinService();

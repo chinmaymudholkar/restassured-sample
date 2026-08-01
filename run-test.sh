@@ -1,11 +1,14 @@
 #!/bin/bash
+
+# Navigate to project root
 cd "$(dirname "$0")"
 
-# Clean up old images
-podman rmi rest-assured-runner
+# Check if the image exists
+if ! podman image exists rest-assured-runner; then
+    echo "Image not found. Building..."
+    podman build -t rest-assured-runner .
+fi
 
-# Build if image doesn't exist or force rebuild
-podman build -t rest-assured-runner .
-
-# Run tests
+# Run the tests
+echo "Running tests..."
 podman run --rm -v "$(pwd):/app:Z" rest-assured-runner mvn test
