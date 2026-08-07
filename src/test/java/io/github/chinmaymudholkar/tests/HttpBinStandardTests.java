@@ -12,6 +12,8 @@ import java.util.Map;
 
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.equalTo;
+import io.qameta.allure.*;
+
 
 @ExtendWith(TestListeners.class)
 class HttpBinStandardTests extends ApiBase {
@@ -19,6 +21,8 @@ class HttpBinStandardTests extends ApiBase {
     private final HttpBinService service = new HttpBinService();
 
     @Test
+    @Feature("StandardTests")
+    @Story("GET Request")
     void testGetRequest() {
         ApiResponse response = service.getEndpoint("/get?key1=value1");
         response.assertStatusCode(200)
@@ -27,6 +31,8 @@ class HttpBinStandardTests extends ApiBase {
     }
 
     @Test
+    @Feature("StandardTests")
+    @Story("POST Request")
     void testPostJsonRequest() {
         Map<String, Object> payload = new HashMap<>();
         payload.put("name", "Architect");
@@ -39,6 +45,8 @@ class HttpBinStandardTests extends ApiBase {
     }
 
     @Test
+    @Feature("StandardTests")
+    @Story("PUT Request")
     void testPutRequest() {
         Map<String, Object> payload = new HashMap<>();
         payload.put("id", 101);
@@ -50,6 +58,8 @@ class HttpBinStandardTests extends ApiBase {
     }
 
     @Test
+    @Feature("StandardTests")
+    @Story("DELETE Request")
     void testDeleteRequest() {
         ApiResponse response = service.deleteEndpoint("/delete");
         response.assertStatusCode(200);
