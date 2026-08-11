@@ -1,17 +1,13 @@
-# Use a lightweight OpenJDK 17 image with Maven
-FROM maven:3.9.9-eclipse-temurin-21 AS build
+FROM maven:3.9.9-eclipse-temurin-21
 
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy only the build definition first to leverage Docker layer caching
 COPY pom.xml .
-
-# Download dependencies (this layer caches until pom.xml changes)
 RUN mvn dependency:go-offline -B
 
-# Copy the source code
 COPY src ./src
+COPY .env .
 
-# Build and run tests inside the container
+# Ensure target directory exists
+RUN mkdir -p /app/target
+
+# Command: Run tests, generate report, start server
 CMD ["mvn", "test"]
